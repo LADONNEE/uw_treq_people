@@ -38,7 +38,7 @@ class SuggestController extends AbstractController
         if ($person) {
             return response()->json([
                 'found' => true,
-                'id' => $person->id,
+                'id' => $person->person_id,
                 'firstname' => $person->firstname,
                 'lastname' => $person->lastname,
                 'uwnetid' => $person->uwnetid,
@@ -58,7 +58,7 @@ class SuggestController extends AbstractController
         $out = [];
         foreach ($results as $person) {
             $out[] = [
-                'id'   => $person->id,
+                'id'   => $person->person_id,
                 'name' => eNameNetID($person),
             ];
         }

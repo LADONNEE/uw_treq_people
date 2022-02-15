@@ -89,13 +89,13 @@ class Person extends AbstractModel implements PersonInterface
             $this->legal_name = $legal_name;
         }
         if ($changed) {
-            $exists = Aka::where('person_id', $this->id)
+            $exists = Aka::where('person_id', $this->person_id)
                 ->where('lastname', $oldLast)
                 ->where('firstname', $oldFirst)
                 ->first();
             if (!$exists) {
                 $aka = new Aka();
-                $aka->person_id = $this->id;
+                $aka->person_id = $this->person_id;
                 $aka->lastname = $oldLast;
                 $aka->firstname = $oldFirst;
                 if (!is_array($this->akas)) {
@@ -113,12 +113,12 @@ class Person extends AbstractModel implements PersonInterface
      */
     public function emailType($type)
     {
-        $out = Email::where('person_id', $this->id)->where('emailtype', $type)->first();
+        $out = Email::where('person_id', $this->person_id)->where('emailtype', $type)->first();
         if ($out) {
             return $out;
         }
         $out = new Email();
-        $out->person_id = $this->id;
+        $out->person_id = $this->person_id;
         $out->emailtype = $type;
         return $out;
     }
@@ -147,7 +147,7 @@ class Person extends AbstractModel implements PersonInterface
             return "{$this->uwnetid}@uw.edu";
         }
 
-        $recentEmail = Email::where('person_id', $this->id)->orderBy('updated_at', 'desc')->first();
+        $recentEmail = Email::where('person_id', $this->person_id)->orderBy('updated_at', 'desc')->first();
 
         return ($recentEmail) ? $recentEmail->email : null;
     }
@@ -169,7 +169,7 @@ class Person extends AbstractModel implements PersonInterface
         if ($this->uwnetid) {
             return $this->uwnetid;
         }
-        return 'person id '.$this->id;
+        return 'person id '.$this->person_id;
     }
 
     public function getFirstName()

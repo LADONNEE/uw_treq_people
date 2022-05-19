@@ -232,16 +232,16 @@ class Person extends AbstractModel implements PersonInterface
 
 protected function preSave()
     {
-        if (!$this->legal_name) {
+        /*if (!$this->legal_name) {
             $this->legal_name = $this->makeLegalName($this->lastname, $this->firstname);
         }
-        $this->uwperson = $this->isUwPerson();
+        $this->uwperson = $this->isUwPerson();*/
         return true;
     }
 
     protected function postSave()
     {
-        $this->saveAkas();
+        //$this->saveAkas();
         //$this->logChanges();
         return true;
     }

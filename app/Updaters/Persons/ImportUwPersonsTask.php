@@ -33,16 +33,16 @@ class ImportUwPersonsTask
         foreach ($results as $row) {
             $data = $this->parseRow($row);
             $person = Person::firstOrNew([
-                'uwnetid' => $data['uwnetid'] /*,
-                'person_id' => $data['person_id'],                
-                'firstname' => $data['firstname'],
-                'lastname' => $data['lastname'],
+                //'uwnetid' => $data['UWNetID'],
+                'person_id' => $data['person_id'] /*,                
+                'firstname' => $data['LegalFirstName'],
+                'lastname' => $data['LegalLastName'],
                 'studentno' => $data['studentno'],
                 'employeeid' => $data['employeeid'],
                 'email' => $data['email']*/
             ]);
             $person->fill($data);
-            $person->updating = 0;
+            //$person->updating = 0;
             $person->save();
         }
 
@@ -52,14 +52,20 @@ class ImportUwPersonsTask
     public function parseRow($row)
     {
         $out = [];
-        foreach ($row as $index => $value) {
+        /*foreach ($row as $index => $value) {
             $out[$index] = $this->parser->string($value);
-        }
+        }*/
+
+        $out['person_id'] = $this->parser->string($row['PersonKey']);
+        $out['firstname'] = $this->parser->string($row['LegalFirstName']);
+        $out['lastname'] = $this->parser->string($row['LegalLastName']);
+        
+
         /*$out['EffectiveDate'] = $this->parser->dateYmd($row['EffectiveDate']);
         $out['TotalPeriodBeginDate'] = $this->parser->dateYmd($row['TotalPeriodBeginDate']);
         $out['TotalPeriodEndDate'] = $this->parser->dateYmd($row['TotalPeriodEndDate']);*/
-        $out['studentno'] = $this->parser->integer($row['studentno']);
-        $out['employeeid'] = $this->parser->integer($row['employeeid']);
+        $out['studentno'] = $this->parser->integer($row['StudentId']);
+        $out['employeeid'] = $this->parser->integer($row['EmployeeID']);
 
         /*if ($out['FoodApprovalInd'] === null) {
             $out['FoodApprovalInd'] = 0;

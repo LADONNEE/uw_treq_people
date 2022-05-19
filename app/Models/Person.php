@@ -34,7 +34,9 @@ class Person extends AbstractModel implements PersonInterface
         'updated_at',
     ];
 
-    protected $table = 'uw_persons';
+    protected $table = 'shared.uw_persons';
+
+    protected $primaryKey = 'person_id';
 
     protected $akas;
 

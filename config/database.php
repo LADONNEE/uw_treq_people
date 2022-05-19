@@ -91,6 +91,13 @@ return [
             'prefix_indexes' => true,
         ],
 
+        'edw' => [
+            'driver'    => 'odbc',
+            'dsn'       => 'EDW_ODS',
+            'username'  => env('DB_USERNAME_EDW', 'local_env'),
+            'password'  => env('DB_PASSWORD_EDW', 'local_env'),
+        ],
+
     ],
 
     /*

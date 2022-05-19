@@ -27,7 +27,7 @@ class PersonsDataSource
     public function getCollegePositions()
     {
         $match = "'%UAA%'";
-        $validity = "'2022-01-01'" ;  // Carbon::now()->addYears(1);
+        $validity = "'" . Carbon::now()->addYears(1)->format('Y-m-d') . "'"; //"'2022-01-01'" ; 
         $sql = sqlInclude(__DIR__ .'/Queries/sql/persons.sql', [
             '__MATCH__' => $match,
             '__VALIDITY__' => $validity //->format('Y-m-d')

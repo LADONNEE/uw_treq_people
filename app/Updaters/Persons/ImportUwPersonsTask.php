@@ -56,6 +56,7 @@ class ImportUwPersonsTask
             $out[$index] = $this->parser->string($value);
         }*/
 
+        $out['uwnetid'] = $this->parser->string($row['UWNetID']);
         $out['person_id'] = $this->parser->string($row['PersonKey']);
         $out['firstname'] = $this->parser->string($row['LegalFirstName']);
         $out['lastname'] = $this->parser->string($row['LegalLastName']);

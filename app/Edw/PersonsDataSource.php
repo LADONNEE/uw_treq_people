@@ -26,7 +26,7 @@ class PersonsDataSource
      */
     public function getCollegePositions()
     {
-        $match = "'" . env('DB_QUERY_PERSONS') . "'"; // "'%UAA%'";
+        $match = "'" . env('DB_QUERY_PERSONS') . "'"; // "'%UWORG%'";
         $validity = "'" . Carbon::now()->addYears(1)->format('Y-m-d') . "'"; //"'2022-01-01'" ; 
         $sql = sqlInclude(__DIR__ .'/Queries/sql/persons.sql', [
             '__MATCH__' => $match,

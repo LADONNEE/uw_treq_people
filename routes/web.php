@@ -14,7 +14,7 @@ use App\Http\Controllers\AutoCompleteController;
 |
 */
 
-Route::group(array('prefix' => 'searchpersons'), function() {
+Route::group(array('prefix' => 'searchpersons'), function($route) {
 
     Route::get('/', function () {
         return view('welcome');

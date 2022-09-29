@@ -14,11 +14,14 @@ use App\Http\Controllers\AutoCompleteController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(array('prefix' => 'searchpersons'), function() {
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::get('search', [AutoCompleteController::class, 'index']);
+
+    Route::get('suggest',    [App\Http\Controllers\Person\SuggestController::class, 'suggest']  );
+
 });
-
-Route::get('search', [AutoCompleteController::class, 'index']);
-
-Route::get('suggest',    [App\Http\Controllers\Person\SuggestController::class, 'suggest']  );
-

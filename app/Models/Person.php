@@ -16,7 +16,7 @@ class Person extends AbstractModel implements PersonInterface
     protected $table;
 
     public function __construct() {
-            $this->table = env('DB_DATABASE_SHARED') . 'uw_persons';
+            $this->table = env('DB_DATABASE_SHARED') . '.uw_persons'; 
     } 
 
 

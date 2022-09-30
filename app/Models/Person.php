@@ -10,13 +10,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use Config;
+
 class Person extends AbstractModel implements PersonInterface
 {
 
     protected $table;
 
     public function __construct() {
-            $this->table = env('DB_DATABASE_SHARED') . '.uw_persons'; 
+            $this->table = Config::get('app.database_shared') . '.uw_persons'; 
     } 
 
 

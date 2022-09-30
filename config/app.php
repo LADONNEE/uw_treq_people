@@ -231,6 +231,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
 
-    ]
+    ],
+
+    'database_shared' => env('DB_DATABASE_SHARED')
 
 ];

@@ -13,6 +13,13 @@ use Laravel\Sanctum\HasApiTokens;
 class Person extends AbstractModel implements PersonInterface
 {
 
+    protected $table;
+
+    public function __construct() {
+            $this->table = env('DB_DATABASE_SHARED') . 'uw_persons';
+    } 
+
+
     /**
      * The attributes that are mass assignable.
      *
@@ -34,7 +41,7 @@ class Person extends AbstractModel implements PersonInterface
         'updated_at',
     ];
 
-    protected $table = 'shared.uw_persons';
+    //protected $table = 'shared.uw_persons';
 
     protected $primaryKey = 'person_id';
 

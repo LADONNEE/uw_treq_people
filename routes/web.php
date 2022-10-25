@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutoCompleteController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,8 +21,8 @@ Route::group(array('prefix' => 'searchpersons'), function($route) {
         return view('welcome');
     });
 
-    Route::get('search', [AutoCompleteController::class, 'index']);
+    $route->get('search', [AutoCompleteController::class, 'index']);
 
-    Route::get('suggest',    [App\Http\Controllers\Person\SuggestController::class, 'suggest']  );
+    $route->get('suggest', 'App\Http\Controllers\Person\SuggestController@suggest');
 
 });

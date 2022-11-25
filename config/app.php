@@ -233,6 +233,11 @@ return [
 
     ],
 
-    'database_shared' => env('DB_DATABASE_SHARED')
+    'database_shared' => env('DB_DATABASE_SHARED'),
+
+    'db_query_persons' => env('DB_QUERY_PERSONS'),
+
+    
+
 
 ];

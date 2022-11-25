@@ -45,4 +45,4 @@ INNER JOIN HumanResources.sec.SupervisoryOrg org
 LEFT JOIN HumanResources.sec.Person MGR
   ON org.ManagerKey = MGR.PersonKey
   AND MGR.RecordUpdateDttm IS NULL
-WHERE wp.ECSCode <> 'S' 
+WHERE wp.ECSCode <> 'S' AND p.UWNetID IS NOT NULL

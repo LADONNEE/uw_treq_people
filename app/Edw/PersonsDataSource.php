@@ -34,10 +34,6 @@ class PersonsDataSource
             '__VALIDITY__' => $validity //->format('Y-m-d')
         ]);
 
-        echo "this is the match";
-        echo $match;
-        echo env('DB_QUERY_PERSONS');
-
         return $this->edw->fetchAssoc($sql);
     }
 

@@ -2,8 +2,12 @@ SELECT DISTINCT
   p.PersonKey,
   p.LegalName,
   p.DisplayName,
-  RIGHT(p.DisplayName, CHARINDEX(' ,',REVERSE(p.DisplayName)) -1 ) AS LegalFirstName,
-  LEFT(p.DisplayName, CHARINDEX(', ',p.DisplayName)-1) AS LegalLastName,
+  CASE WHEN CHARINDEX(' ,',REVERSE(p.DisplayName)) = 0 THEN p.LegalFirstName
+  ELSE RIGHT(p.DisplayName, CHARINDEX(' ,',REVERSE(p.DisplayName)) -1 )
+  END AS LegalFirstName,
+  CASE WHEN CHARINDEX(', ',p.DisplayName) = 0 THEN p.LegalLastName
+  ELSE LEFT(p.DisplayName, CHARINDEX(', ',p.DisplayName)-1)
+  END AS LegalLastName,
   p.EmployeeID,
   p.RegID,
   p.UWNetID,

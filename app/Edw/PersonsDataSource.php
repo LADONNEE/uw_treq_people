@@ -8,7 +8,7 @@
 namespace App\Edw;
 
 use Carbon\Carbon;
-use Config;
+
 
 class PersonsDataSource
 {
@@ -27,7 +27,7 @@ class PersonsDataSource
      */
     public function getCollegePositions()
     {
-        $match = "'" . Config::get('app.db_query_persons') . "'"; // "'%UWORG%'";
+        $match = "'" . config('app.db_query_persons') . "'"; // "'%UWORG%'";
         $validity = "'" . Carbon::now()->format('Y-m-d') . "'"; //"'2022-01-01'" ; 
         $sql = sqlInclude(__DIR__ .'/Queries/sql/persons.sql', [
             '__MATCH__' => $match,

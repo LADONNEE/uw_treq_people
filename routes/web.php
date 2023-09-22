@@ -25,4 +25,14 @@ Route::group(array('prefix' => 'searchpersons'), function($route) {
 
     $route->get('suggest', 'App\Http\Controllers\Person\SuggestController@suggest');
 
+    //Route::get('saveuwperson', 'App\Http\Controllers\Person\SuggestController@saveuwperson');
+
+
+    
+
+    
+
+
 });
+
+//Route::post('searchpersons/saveuwperson', 'App\Http\Controllers\Person\SuggestController@saveuwperson');

@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('update:persons')->dailyAt('00:12')->timezone('America/Los_Angeles');
+        $schedule->command('cache:prune-stale-tags')->hourly();
     }
 
     /**

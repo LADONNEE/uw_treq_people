@@ -38,7 +38,7 @@ class Person extends AbstractModel implements PersonInterface
     ];
 
 
-    protected $dates = [
+    protected $casts = [
         'created_at',
         'updated_at',
     ];

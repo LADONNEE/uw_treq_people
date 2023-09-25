@@ -39,8 +39,8 @@ class Person extends AbstractModel implements PersonInterface
 
 
     protected $casts = [
-        'created_at',
-        'updated_at',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 
     //protected $table = 'shared.uw_persons';

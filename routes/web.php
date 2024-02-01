@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutoCompleteController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,9 +29,10 @@ Route::group(array('prefix' => 'searchpersons'), function($route) {
 
     
 
+    $route->get('suggest-uw',    [App\Http\Controllers\Person\UwsuggestController::class, 'suggest']  );
     
+    $route->get('import-uw',    [App\Http\Controllers\Person\UwimportController::class, 'import']  );
 
 
 });
 
-//Route::post('searchpersons/saveuwperson', 'App\Http\Controllers\Person\SuggestController@saveuwperson');

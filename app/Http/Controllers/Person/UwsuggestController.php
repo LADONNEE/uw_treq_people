@@ -6,27 +6,26 @@ namespace App\Http\Controllers\Person;
 
 use App\Http\Controllers\AbstractController;
 use App\Models\Person;
-use App\Reports\Person\PersonSuggestReport;
+use App\Reports\Person\UwpersonSuggestReport;
 use App\Repositories\Person\PersonSearch;
 use Illuminate\Http\Request;
 
-class SuggestController extends AbstractController
+class UwsuggestController extends AbstractController
 {
 
     public function prefetch()
     {
-        $report = new PersonSuggestReport(null, request('scope', 'coe'));
+        $report = new UwpersonSuggestReport(null, request('scope', 'coe')); 
         $results = $report->prefetch();
         return response()->json($this->prepare($results));
     }
 
     public function suggest()
     {
-        $report = new PersonSuggestReport(request('q'), request('scope'));
+        $report = new UwpersonSuggestReport(request('q'), request('scope'));
         $results = $report->search();
         return response()->json($this->prepare($results));
     }
-
 
     public function find()
     {
@@ -54,13 +53,23 @@ class SuggestController extends AbstractController
         ]);
     }
 
+
+                // 'person_id' => $item->PersonKey,
+                // 'LegalName' => $item->LegalName,
+                // 'LegalFirstName' => $item->LegalFirstName,
+                // 'LegalLastName' => $item->LegalLastName,
+                // 'EmployeeID' => $item->EmployeeID,
+                // 'RegID' => $item->RegID,
+                // 'UWNetID' => $item->UWNetID,
+                // 'StudentId' => $item->StudentId
+
     public function prepare($results)
     {
         $out = [];
         foreach ($results as $person) {
             $out[] = [
-                'id'   => $person->person_id,
-                'name' => eNameNetID($person),
+                'id'   => $person->PersonKey,
+                'name' => $person->LegalFirstName . ' ' . $person->LegalLastName . ' ('.$person->UWNetID.')',
             ];
         }
         return $out;

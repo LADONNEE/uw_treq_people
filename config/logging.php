@@ -114,6 +114,10 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+        'notify' => [
+            'driver' => 'stack',
+            'channels' => ['single', 'rollbar'],
+        ],
     ],
 
 ];

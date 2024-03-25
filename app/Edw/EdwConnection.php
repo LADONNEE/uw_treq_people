@@ -3,7 +3,7 @@
 namespace App\Edw;
 
 /**
- * ODBC database connection to the UW Enterprise Data Warehouse
+ * ODBC database connection to the EDW
  */
 class EdwConnection implements EdwConnectionInterface
 {

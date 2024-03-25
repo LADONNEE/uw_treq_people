@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Console command to update share uw_persons data from UW EDW
+ * Console command to update share persons data from EDW
  * @author ladonnee
  */
 

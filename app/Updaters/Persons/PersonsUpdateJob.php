@@ -27,4 +27,11 @@ class PersonsUpdateJob
     {
         (new ImportUwPersonsTask($this->edw, $this->parser))->run();
     }
+
+    // public function importAdHocUser($persondata)
+    // {
+    //     (new ImportUwPersonsTask($this->edw, $this->parser))->importAdHocUser($persondata);
+    // }
+
+
 }

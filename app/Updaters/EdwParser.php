@@ -1,6 +1,6 @@
 <?php
 /**
- * @package edu.uw
+ * @package app.treq
  */
 
 /**
